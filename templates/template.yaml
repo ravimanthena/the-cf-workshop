@@ -9,7 +9,6 @@ Resources:
         FromPort: 80
         ToPort: 80
 
-
   webserver:
     Type: AWS::EC2::Instance
     Properties:
@@ -26,3 +25,8 @@ Resources:
           #!/bin/bash -xe
           yum install httpd -y
           service httpd start
+
+Outputs:
+  webserverIp:
+    Description: IP address that the webserver is listening on
+    Value: !GetAtt webserver.PublicIp
